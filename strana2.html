@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Strana 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/main.js"></script>
+    <style>
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: blue;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "da";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: lightgoldenrodyellow;
+            transition: .4s;
+        }
+
+        input:checked+.slider {
+            background-color: red;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(26px);
+            content: "ne";
+        }
+    </style>
+</head>
+
+<body>
+    <main id="omotac">
+        <h1></h1>
+        <div id="omotacDva">
+            <div class="nav justify-content-center nav-pills flex-column flex-md-row">
+                <a class="nav-link active" href="#ocene" data-toggle="tab" onclick="spisak()">Ocene</a>
+                <a class="nav-link" href="#vladanje" data-toggle="tab">Vladanje i izostanci</a>
+                <a class="nav-link" href="#obavestenja" data-toggle="tab">Obaveštenja</a>
+            </div>
+            <div class="tab-content py-5">
+                <div id="cene" class="tab-pane active"></div>
+                <div id="vladanje" class="tab-pane fade">
+                    <form action="\" onsubmit="noviUcenik()" method="post">
+                        <div class="form-group">
+                            <label for="ime">Ime učenika</label>
+                            <input type="text" class="form-control" id="ime" placeholder="Ime učenika..." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="prezime">Prezime učenika</label>
+                            <input type="text" class="form-control" id="prezime" placeholder="Prezime učenika..."
+                                required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Unesi</button>
+                    </form>
+                </div>
+                <div id="obavestenja" class="tab-pane fade">
+                    <form action="\" onsubmit="noviUcenik()" method="post">
+                        <table>
+                            <tr>
+                                <td>E-mail obaveštenje o novoj oceni</td>
+                                <td><label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label></td>
+                            </tr>
+                            <tr>
+                                <td>SMS obaveštenje o novoj oceni</td>
+                                <td><label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label></td>
+                            </tr>
+                            <tr>
+                                <td>E-mail obaveštenje o izostanku</td>
+                                <td><label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label></td>
+                            </tr>
+                            <tr>
+                                <td>SMS obaveštenje o izostanku</td>
+                                <td><label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label></td>
+                            </tr>
+                            <tr>
+                                <td>E-mail obaveštenje o napomeni</td>
+                                <td><label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label></td>
+                            </tr>
+                            <tr>
+                                <td>SMS obaveštenje o napomeni</td>
+                                <td><label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label></td>
+                            </tr>
+                        </table>
+                        <button type="submit" class="btn btn-primary">Sačuvaj</button>
+                        <button type="submit" class="btn btn-danger">Obriši</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        function obavestenja() {
+            var naslov = document.getElementsByTagName("h1");
+            naslov.textContent = ucenici[n].ime + " " + ucenici[n].prezime;
+            naslov.appendChild(h1);
+
+            var section = document.createElement("section");
+            section.setAttribute("id", "omotacDva");
+            omotac.appendChild(section);
+            var table = document.getElementById("omotacDva");
+            table = document.createElement("table");
+            omotacDva.appendChild(table);
+            for (i = 0; i < 12; i++) {
+                var tr = document.createElement("tr");
+                for (j = 0; j < 2; j++) {
+                    var td = document.createElement("td");
+                    switch (j) {
+                        case 0:
+                            td.textContent = predmeti[i];
+                            break;
+
+                        default:
+                            td.textContent = ucenici[n].ocene[i];
+                            break;
+                    }
+                    tr.appendChild(td);
+                }
+                table.appendChild(tr);
+            }
+            return;
+        }
+        naslov(n)
+        obavestenja();
+    </script>
+</body>
+
+</html>
