@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Elektronski dnevnik</title>
+    <title>Strana 3</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -15,7 +15,7 @@
     <main id="omotac">
         <h1></h1>
         <div id="omotacDva">
-            <table id="mmJedan">
+            <table id="mm001">
 
             </table>
         </div>
@@ -28,18 +28,47 @@
         crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
     <script>
-        function ispis() {
-            var mmJedan = document.getElementById("mmJedan");
-            var tr = document.createElement("tr");
-            mmJedan.appendChild(tr);
-            for (i = 0; i < 12; i++) {
-                var td = document.createElement("td");
-                td.textContent = ucenici[0].ocene[i];
-                tr.appendChild(td);
-            }
-            
+        function naslov() {
+            var naslov = document.getElementsByTagName("h1");
+            naslov.textContent = ucenici[0].ime + " " + ucenici[0].prezime;
             return;
         }
+        function ispis() {
+            var mm001 = document.getElementById("mm001");
+            for (i = 0; i < 12; i++) {
+                var tr = document.createElement("tr");
+                for (j = 0; j < 1; j++) {
+                    var td = document.createElement("td");
+                    td.textContent = predmeti[i];
+                    tr.appendChild(td);
+                    var td = document.createElement("td");
+                    td.textContent = ucenici[0].ocene[i];
+                    tr.appendChild(td);
+                    var td = document.createElement("td");
+                    tr.appendChild(td);
+                    var label=document.createElement("label");
+                    label.textContent=("Unesite ocenu:");
+                    td.appendChild(label);
+                    var td = document.createElement("td");
+                    tr.appendChild(td);
+                    var input=document.createElement("input");
+                    input.setAttribute("type","number");
+                    input.setAttribute("min","1");
+                    input.setAttribute("max","5");
+                    td.appendChild(input);
+                    var td = document.createElement("td");
+                    tr.appendChild(td);
+                    var button = document.createElement("button");
+                    button.textContent=("Potvrdi");
+                    td.appendChild(button);
+                    button.setAttribute("type","submit");
+                    button.setAttribute("class","btn btn-primary");
+                }
+                mm001.appendChild(tr);
+            }
+            return;
+        }
+        naslov();
         ispis();
     </script>
 </body>
