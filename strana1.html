@@ -9,6 +9,85 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/main.js"></script>
+    <style>
+        button {
+            width: 150px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        body {
+            font-family: Verdana, sans-serif;
+        }
+
+        .month {
+            padding: 10px;
+            width: 100%;
+            background: dodgerblue;
+            text-align: center;
+        }
+
+        .month ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        .month ul li {
+            color: white;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .month .prev {
+            float: left;
+        }
+
+        .month .next {
+            float: right;
+        }
+
+        .weekdays {
+            margin: 0;
+            padding: 10px 0;
+            background-color: #ddd;
+        }
+
+        .weekdays li {
+            display: inline-block;
+            width: 12%;
+            color: #666;
+            text-align: center;
+        }
+
+        .days {
+            padding: 10px 0;
+            background: #eee;
+            margin: 0;
+        }
+
+        .days li {
+            list-style-type: none;
+            display: inline-block;
+            width: 12%;
+            text-align: center;
+            margin-bottom: 5px;
+            font-size: 12px;
+            color: #777;
+        }
+
+        .days li .active {
+            padding: 5px;
+            background: dodgerblue;
+            color: white !important
+        }
+    </style>
 </head>
 
 <body>
@@ -16,8 +95,9 @@
         <h1>UČENICI</h1>
         <div id="omotacDva">
             <div class="nav justify-content-center nav-pills flex-column flex-md-row">
-                <a class="nav-link active" href="#lista" data-toggle="tab" onclick="spisak()">Spisak učenika</a>
+                <a class="nav-link active" href="#lista" data-toggle="tab">Spisak učenika</a>
                 <a class="nav-link" href="#novi" data-toggle="tab">Dodaj novog učenika</a>
+                <a class="nav-link" href="#kalendar" data-toggle="tab">Kalendar rada</a>
             </div>
             <div class="tab-content py-5">
                 <div id="lista" class="tab-pane active"></div>
@@ -35,6 +115,60 @@
                         <button type="submit" class="btn btn-primary">Unesi</button>
                     </form>
                 </div>
+                <div id="kalendar" class="tab-pane fade">
+                    <div class="month">
+                        <ul>
+                            <li class="prev">&#10094;</li>
+                            <li class="next">&#10095;</li>
+                            <li>MART 2019</li>
+                        </ul>
+                    </div>
+
+                    <ul class="weekdays">
+                        <li>Pon</li>
+                        <li>Uto</li>
+                        <li>Sre</li>
+                        <li>Čet</li>
+                        <li>Pet</li>
+                        <li>Sub</li>
+                        <li>Ned</li>
+                    </ul>
+
+                    <ul class="days">
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>6</li>
+                        <li>7</li>
+                        <li>8</li>
+                        <li>9</li>
+                        <li><span class="active">10</span></li>
+                        <li>11</li>
+                        <li>12</li>
+                        <li>13</li>
+                        <li>14</li>
+                        <li>15</li>
+                        <li>16</li>
+                        <li>17</li>
+                        <li>18</li>
+                        <li>19</li>
+                        <li>20</li>
+                        <li>21</li>
+                        <li>22</li>
+                        <li>23</li>
+                        <li>24</li>
+                        <li>25</li>
+                        <li>26</li>
+                        <li>27</li>
+                        <li>28</li>
+                        <li>29</li>
+                        <li>30</li>
+                        <li>31</li>
+                    </ul>
+
+                </div>
             </div>
         </div>
     </main>
@@ -46,18 +180,33 @@
         crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
     <script>
+        var niz = [];
+        function redosled() {
+            for (i = 0; i < korisnicko.length; i++) {
+                niz[i] = ucenici[i].prezime;
+            }
+            niz = niz.sort();
+            for (i = 0; i < korisnicko.length; i++) {
+                for (j = 0; j < korisnicko.length; j++) {
+                    if (niz[i] != ucenici[j].prezime) {
+                        continue;
+                    } else (niz[i] = ucenici[j].ime + " " + niz[i])
+                }
+            }
+            return niz;
+        }
         function spisak() {
             var lista = document.getElementById("lista");
-            //document.getElementById("listing").reset();
             var ol = document.createElement("ol");
             lista.appendChild(ol);
             for (i = 0; i < korisnicko.length; i++) {
                 var li = document.createElement("li");
                 ol.appendChild(li);
-                var a = document.createElement("a");
-                a.textContent = ucenici[i].ime + " " + ucenici[i].prezime;
-                li.appendChild(a);
-                a.setAttribute("href", "strana3.html/#" + korisnicko[i]);
+                var button = document.createElement("button");
+                button.textContent = niz[i];
+                li.appendChild(button);
+                button.setAttribute("type", "button");
+                button.setAttribute("class", "btn btn-outline-primary btn-sm");
             }
             return;
         }
@@ -68,6 +217,8 @@
             ucenici.prezime = prezime;
             return;
         }
+        redosled();
+        spisak();
     </script>
 </body>
 
