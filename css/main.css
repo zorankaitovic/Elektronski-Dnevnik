@@ -2,6 +2,9 @@
     margin: auto;
 }
 
+.hidden{
+    display: none;
+}
 #omotac {
     background-image: url("../img/pozadina.jpg");
     background-size: cover;
@@ -18,14 +21,14 @@
 #omotacDva {
     opacity: 0.80;
     border: 1px solid lightblue;
-    padding: 40px 20px;
+    padding: 20px;
     background: lightblue;
+    height: 80vh;
 }
 
 td {
-    border: 1px solid lightblue;
-    width: 200px;
-    padding: 5px;
+    width: auto;
+    padding: 5px 20px 5px 20px;
     text-align: center;
 }
 
@@ -35,5 +38,22 @@ table {
   }
   
   tr:nth-child(odd) {
-	background-color: lightskyblue;
+    background-color: lightskyblue;
   }
+  
+  td:nth-child(odd) {
+    border: lightskyblue;
+  }
+  .container {
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.ikonica {
+    padding: 10px;
+    background: dodgerblue;
+    color: white;
+    min-width: 50px;
+    text-align: center;
+}
