@@ -6,168 +6,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Strana 1</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <script src="js/main.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css\main.css">
+    <link rel="stylesheet" href="css\bootstrap.min.css">
+    <script src="js\main.js"></script>
     <style>
-        button {
-            width: 150px;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        ul {
-            list-style-type: none;
-        }
-
-        body {
-            font-family: Verdana, sans-serif;
-        }
-
-        .month {
-            padding: 10px;
-            width: 100%;
-            background: dodgerblue;
-            text-align: center;
-        }
-
-        .month ul {
-            margin: 0;
-            padding: 0;
-        }
-
-        .month ul li {
-            color: white;
-            font-size: 20px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        .month .prev {
-            float: left;
-        }
-
-        .month .next {
-            float: right;
-        }
-
-        .weekdays {
-            margin: 0;
-            padding: 10px 0;
-            background-color: #ddd;
-        }
-
-        .weekdays li {
-            display: inline-block;
-            width: 12%;
-            color: #666;
-            text-align: center;
-        }
-
-        .days {
-            padding: 10px 0;
-            background: #eee;
-            margin: 0;
-        }
-
-        .days li {
-            list-style-type: none;
-            display: inline-block;
-            width: 12%;
-            text-align: center;
-            margin-bottom: 5px;
-            font-size: 12px;
-            color: #777;
-        }
-
-        .days li .active {
-            padding: 5px;
-            background: dodgerblue;
-            color: white !important
-        }
+       
     </style>
 </head>
 
 <body>
-    <main id="omotac">
-        <h1>UČENICI</h1>
-        <div id="omotacDva">
-            <div class="nav justify-content-center nav-pills flex-column flex-md-row">
-                <a class="nav-link active" href="#lista" data-toggle="tab">Spisak učenika</a>
-                <a class="nav-link" href="#novi" data-toggle="tab">Dodaj novog učenika</a>
-                <a class="nav-link" href="#kalendar" data-toggle="tab">Kalendar rada</a>
+    <main id="omotac" class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h1>ELEKTRONSKI DNEVNIK GIMNAZIJE CODE</h1>
+                <h1>Odeljenje IV-1</h1>
             </div>
-            <div class="tab-content py-5">
-                <div id="lista" class="tab-pane active"></div>
-                <div id="novi" class="tab-pane fade">
-                    <form action="\" onsubmit="noviUcenik()" method="post">
-                        <div class="form-group">
-                            <label for="ime">Ime učenika</label>
-                            <input type="text" class="form-control" id="ime" placeholder="Ime učenika..." required>
-                        </div>
-                        <div class="form-group">
-                            <label for="prezime">Prezime učenika</label>
-                            <input type="text" class="form-control" id="prezime" placeholder="Prezime učenika..."
-                                required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Unesi</button>
-                    </form>
+            <div id="omotacDva">
+                <div class="nav justify-content-center nav-pills flex-column flex-md-row">
+                    <a class="nav-link active" href="#lista" data-toggle="tab">Spisak učenika</a>
+                    <a class="nav-link" href="#novi" data-toggle="tab">Dodaj novog učenika</a>
+                    <a class="nav-link" href="#kalendar" data-toggle="tab">Kalendar rada</a>
                 </div>
-                <div id="kalendar" class="tab-pane fade">
-                    <div class="month">
-                        <ul>
-                            <li class="prev">&#10094;</li>
-                            <li class="next">&#10095;</li>
-                            <li>MART 2019</li>
+                <div class="tab-content py-3">
+                    <div id="lista" class="tab-pane active"></div>
+                    <div id="novi" class="tab-pane fade">
+                        <form onclick="return noviUcenik()" method="POST">
+                            <div class="form-group">
+                                <label for="imeNovi">Ime učenika</label>
+                                <input type="text" class="form-control" id="imeNovi" placeholder="Ime učenika..."
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="prezimeNovi">Prezime učenika</label>
+                                <input type="text" class="form-control" id="prezimeNovi"
+                                    placeholder="Prezime učenika..." required>
+                            </div>
+                            <button type="submit" class="btn btn-primary submit-button">Unesi</button>
+                        </form>
+                    </div>
+                    <div id="kalendar" class="tab-pane fade">
+                        <div class="meseci">
+                            <ul>
+                                <li class="prev"><a href="#">&#10094;</a></li>
+                                <li class="next"><a href="#">&#10095;</a></li>
+                                <li id="mesec"></li>
+                            </ul>
+                        </div>
+                        <ul id="sedmica">
+                        </ul>
+                        <ul id="dani">
                         </ul>
                     </div>
-
-                    <ul class="weekdays">
-                        <li>Pon</li>
-                        <li>Uto</li>
-                        <li>Sre</li>
-                        <li>Čet</li>
-                        <li>Pet</li>
-                        <li>Sub</li>
-                        <li>Ned</li>
-                    </ul>
-
-                    <ul class="days">
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>4</li>
-                        <li>5</li>
-                        <li>6</li>
-                        <li>7</li>
-                        <li>8</li>
-                        <li>9</li>
-                        <li><span class="active">10</span></li>
-                        <li>11</li>
-                        <li>12</li>
-                        <li>13</li>
-                        <li>14</li>
-                        <li>15</li>
-                        <li>16</li>
-                        <li>17</li>
-                        <li>18</li>
-                        <li>19</li>
-                        <li>20</li>
-                        <li>21</li>
-                        <li>22</li>
-                        <li>23</li>
-                        <li>24</li>
-                        <li>25</li>
-                        <li>26</li>
-                        <li>27</li>
-                        <li>28</li>
-                        <li>29</li>
-                        <li>30</li>
-                        <li>31</li>
-                    </ul>
-
                 </div>
             </div>
         </div>
@@ -178,47 +67,107 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js\bootstrap.min.js"></script>
     <script>
         var niz = [];
+        localStorage.setItem("ucenici", JSON.stringify(ucenici));
+        var obj = JSON.parse(localStorage.getItem("ucenici"));
+        var brojac = korisnicko.length;
         function redosled() {
-            for (i = 0; i < korisnicko.length; i++) {
-                niz[i] = ucenici[i].prezime;
+            for (i = 0; i < brojac; i++) {
+                niz[i] = obj[i].prezime + " " + obj[i].ime;
+            }
+            var obj1 = JSON.parse(localStorage.getItem("ucenik"));
+            if(obj1!=null){
+            niz.push(obj1.prezime + " " + obj1.ime);
             }
             niz = niz.sort();
-            for (i = 0; i < korisnicko.length; i++) {
-                for (j = 0; j < korisnicko.length; j++) {
-                    if (niz[i] != ucenici[j].prezime) {
-                        continue;
-                    } else (niz[i] = ucenici[j].ime + " " + niz[i])
-                }
-            }
-            return niz;
+            spisak();
+            return;
         }
         function spisak() {
             var lista = document.getElementById("lista");
-            var ol = document.createElement("ol");
-            lista.appendChild(ol);
-            for (i = 0; i < korisnicko.length; i++) {
+            var ul = document.createElement("ul");
+            lista.appendChild(ul);
+            for (i = 0; i < niz.length; i++) {
                 var li = document.createElement("li");
-                ol.appendChild(li);
+                ul.appendChild(li);
                 var button = document.createElement("button");
                 button.textContent = niz[i];
                 li.appendChild(button);
-                button.setAttribute("type", "button");
-                button.setAttribute("class", "btn btn-outline-primary btn-sm");
+                button.setAttribute("id", "ddugme" + i);
+                button.setAttribute("onclick", "window.location.href='strana3.html'");
+                button.setAttribute("class", "btn btn-outline-primary");
             }
             return;
         }
         function noviUcenik() {
-            var ime = document.getElementById("ime").value;
-            ucenici.ime = ime;
-            var prezime = document.getElementById("prezime").value;
-            ucenici.prezime = prezime;
+            var ime = document.getElementById("imeNovi").value;
+            var prezime = document.getElementById("prezimeNovi").value;
+            var ucenik = {};
+            var korisnickoNovo = "";
+            ucenik.ime = ime;
+            ucenik.prezime = prezime;
+            ucenik.ocene = noveOcene;
+            ucenik.brojIzostanaka = noviIzostanci;
+            ucenik.vladanje = novoVladanje;
+            ucenik.rbroj = brojac+1;
+            localStorage.setItem("ucenik", JSON.stringify(ucenik));
+            korisnickoNovo = (ime.slice(0, 1) + prezime.slice(0, 1) + "00" + (brojac + 1)).toLowerCase();
+            if(korisnickoNovo.length==5){
+                korisnicko.push(korisnickoNovo);
+                localStorage.setItem("korisnicko",korisnickoNovo);
+            }
+            
             return;
         }
-        redosled();
-        spisak();
+        function kalendarMesec() {
+            var datum = new Date();
+            var prviDan = 5;
+            var tekuciMesec = document.getElementById("mesec");
+            var ul = document.getElementById("sedmica");
+            tekuciMesec.textContent = meseci[datum.getMonth()].toUpperCase() + " " + datum.getFullYear();
+            for (i = 0; i < 7; i++) {
+                var li = document.createElement("li");
+                li.textContent = dani[i];
+                ul.appendChild(li);
+            }
+            var tekuciDan = datum.getDay();
+            var tekuciDatum = datum.getDate();
+            var ul = document.getElementById("dani");
+            var prethodni = datum.getMonth() - 1;
+            for (i = prviDan - 1; i > 0; i--) {
+                var li = document.createElement("li");
+                li.textContent = brojDana[prethodni] - i + 1;
+                ul.appendChild(li);
+            }
+            for (i = prviDan; i < brojDana[datum.getMonth()] + prviDan; i++) {
+                var li = document.createElement("li");
+                li.textContent = i - 4;
+                if (tekuciDatum == (i - 4)) {
+                    li.style.backgroundColor = "blue";
+                    li.style.color = "black";
+                }
+                if (i - 4 < tekuciDatum) {
+                    li.style.backgroundColor = "gray";
+                    li.style.color = "black";
+                }
+                if (i - 4 > tekuciDatum) {
+                    for (j = 0; j < 5; j++) {
+                        if ((i - 4 == j * 7 + 2) || (i - 4 == j * 7 + 3)) {
+                            li.style.backgroundColor = "red";
+                            li.style.color = "black";
+                        }
+                    }
+                }
+                ul.appendChild(li);
+            }
+            return;
+        }
+        var dugme1 = document.getElementById("lista");
+        var dugme3 = document.getElementById("kalendar");
+        dugme1.addEventListener("click", redosled());
+        dugme3.addEventListener("click", kalendarMesec());
     </script>
 </body>
 

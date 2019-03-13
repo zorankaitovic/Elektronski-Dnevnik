@@ -6,122 +6,87 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Strana 2</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <script src="js/main.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css\main.css">
+    <link rel="stylesheet" href="css\bootstrap.min.css">
+    <script src="js\main.js"></script>
     <style>
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
 
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: blue;
-            transition: .4s;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "da";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: lightgoldenrodyellow;
-            transition: .4s;
-        }
-
-        input:checked+.slider {
-            background-color: red;
-        }
-
-        input:checked+.slider:before {
-            transform: translateX(26px);
-            content: "ne";
-        }
     </style>
 </head>
 
 <body>
-    <main id="omotac">
-        <h1></h1>
-        <div id="omotacDva">
-            <div class="nav justify-content-center nav-pills flex-column flex-md-row">
-                <a class="nav-link active" href="#oceneUcenika" data-toggle="tab">Ocene</a>
-                <a class="nav-link" href="#vladanje" data-toggle="tab">Vladanje i izostanci</a>
-                <a class="nav-link" href="#obavestenja" data-toggle="tab">Obaveštenja</a>
+    <main id="omotac" class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h1>ELEKTRONSKI DNEVNIK GIMNAZIJE CODE</h1>
+                <h1 id="naslov2"></h1>
             </div>
-            <div class="tab-content py-5">
-                <div id="oceneUcenika" class="tab-pane active" >
-                    <table id="tabela"></table>
+            <div id="omotacDva">
+                <div class="nav justify-content-center nav-pills flex-column flex-md-row">
+                    <a class="nav-link active" href="#oceneUcenika" data-toggle="tab">Ocene</a>
+                    <a class="nav-link" href="#vladanje" data-toggle="tab">Vladanje i izostanci</a>
+                    <a class="nav-link" href="#obavestenja" data-toggle="tab">Obaveštenja</a>
                 </div>
-                <div id="vladanje" class="tab-pane fade">
-                    <table id="tabela1"></table>
-                </div>
-                <div id="obavestenja" class="tab-pane fade">
-                    <form id="forma3" action="\" method="post">
-                        <table>
-                            <tr>
-                                <td>E-mail obaveštenje o novoj oceni</td>
-                                <td><label class="switch">
-                                        <input type="checkbox">
-                                        <span class="slider"></span>
-                                    </label></td>
-                            </tr>
-                            <tr>
-                                <td>SMS obaveštenje o novoj oceni</td>
-                                <td><label class="switch">
-                                        <input type="checkbox">
-                                        <span class="slider"></span>
-                                    </label></td>
-                            </tr>
-                            <tr>
-                                <td>E-mail obaveštenje o izostanku</td>
-                                <td><label class="switch">
-                                        <input type="checkbox">
-                                        <span class="slider"></span>
-                                    </label></td>
-                            </tr>
-                            <tr>
-                                <td>SMS obaveštenje o izostanku</td>
-                                <td><label class="switch">
-                                        <input type="checkbox">
-                                        <span class="slider"></span>
-                                    </label></td>
-                            </tr>
-                            <tr>
-                                <td>E-mail obaveštenje o napomeni</td>
-                                <td><label class="switch">
-                                        <input type="checkbox">
-                                        <span class="slider"></span>
-                                    </label></td>
-                            </tr>
-                            <tr>
-                                <td>SMS obaveštenje o napomeni</td>
-                                <td><label class="switch">
-                                        <input type="checkbox">
-                                        <span class="slider"></span>
-                                    </label></td>
-                            </tr>
+                <div class="tab-content py-3">
+                    <div id="oceneUcenika" class="tab-pane active">
+                        <table id="tabela">
                         </table>
-                        <button type="submit" class="btn btn-primary">Sačuvaj</button>
-                        <button type="submit" class="btn btn-danger" onclick="resetuj()"
-                            value="brisanje">Obriši</button>
-                    </form>
+                    </div>
+                    <div id="vladanje" class="tab-pane fade">
+                        <table id="tabela1"></table>
+                    </div>
+                    <div id="obavestenja" class="tab-pane fade">
+                        <form id="forma3">
+                            <table>
+                                <tr>
+                                    <td>E-mail obaveštenje o novoj oceni</td>
+                                    <td><label class="switch">
+                                            <input type="checkbox" name="pitanje1">
+                                            <span class="slider"></span>
+                                        </label></td>
+                                </tr>
+                                <tr>
+                                    <td>SMS obaveštenje o novoj oceni</td>
+                                    <td><label class="switch">
+                                            <input type="checkbox" name="pitanje2">
+                                            <span class="slider"></span>
+                                        </label></td>
+                                </tr>
+                                <tr>
+                                    <td>E-mail obaveštenje o izostanku</td>
+                                    <td><label class="switch">
+                                            <input type="checkbox" name="pitanje3">
+                                            <span class="slider"></span>
+                                        </label></td>
+                                </tr>
+                                <tr>
+                                    <td>SMS obaveštenje o izostanku</td>
+                                    <td><label class="switch" name="pitanje4">
+                                            <input type="checkbox" value="">
+                                            <span class="slider"></span>
+                                        </label></td>
+                                </tr>
+                                <tr>
+                                    <td>E-mail obaveštenje o napomeni</td>
+                                    <td><label class="switch">
+                                            <input type="checkbox" name="pitanje5">
+                                            <span class="slider"></span>
+                                        </label></td>
+                                </tr>
+                                <tr>
+                                    <td>SMS obaveštenje o napomeni</td>
+                                    <td><label class="switch">
+                                            <input type="checkbox" name="pitanje6" value="da">
+                                            <span class="slider"></span>
+                                        </label></td>
+                                </tr>
+                            </table>
+                            <button type="submit" class="btn btn-primary" onclick="return sacuvajObavestenja()"
+                                value="submit">Sačuvaj</button>
+                            <button type="submit" class="btn btn-danger" onclick="return resetuj()"
+                                value="reset">Obriši</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -132,11 +97,115 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js\bootstrap.min.js"></script>
     <script>
         var n = localStorage.getItem("ucenik");
-        naslov(n);
-        vladanje(n);
+        //d e o  za r o d i t e lj e
+        //ispisivanje imena učenika
+        function naslov(n) {
+            var naslov = document.getElementById("naslov2");
+            naslov.textContent = ucenici[n].ime + " " + ucenici[n].prezime;
+            spisakPredmeta(n);
+            return;
+        }
+        //spisak predmeta i ocene
+        function spisakPredmeta(n) {
+            var prosek;
+            var table = document.getElementById("tabela");
+            for (i = 0; i < 12; i++) {
+                var tr = document.createElement("tr");
+                for (j = 0; j < 1; j++) {
+                    var td = document.createElement("td");
+                    td.textContent = predmeti[i];
+                    tr.appendChild(td);
+                    var ocena = 0;
+                    for (k = 0; k < 4; k++) {
+                        var td = document.createElement("td");
+                        td.textContent = ucenici[n].ocene[j][k];
+                        ocena += ucenici[n].ocene[i][k];
+                        td.setAttribute("title", tultip[j][k])
+                        tr.appendChild(td);
+                    }
+                    prosek = (ocena / 4).toFixed(2);
+                    var td = document.createElement("td");
+                    td.textContent = "Prosek: " + prosek;
+                    tr.appendChild(td);
+                }
+                table.appendChild(tr);
+            }
+            return;
+        }
+        //vladanje
+        function vladanje(n) {
+            var table = document.getElementById("tabela1");
+            ukori(n);
+            let uk = localStorage.getItem("ukor");
+            for (i = 0; i < 2; i++) {
+                var tr = document.createElement("tr");
+                for (j = 0; j < 1; j++) {
+                    var td = document.createElement("td");
+                    td.textContent = izostanci[i];
+                    tr.appendChild(td);
+                    var td = document.createElement("td");
+                    td.textContent = ucenici[n].brojIzostanaka[i];
+                    tr.appendChild(td);
+                }
+                table.appendChild(tr);
+            }
+            if (ucenici[n].brojIzostanaka[1] < 5) {
+                return;
+            } else {
+                var vladanje = document.getElementById("vladanje");
+                var div = document.createElement("div");
+                div.textContent = "Zbog " + ucenici[n].brojIzostanaka[1] + " neopravdanih izostanaka, učenik dobija kaznu: " + ukor[uk];
+                div.style.backgroundColor = "red";
+                div.style.padding = "10px";
+                div.style.width = "300px";
+                div.style.color = "black";
+                div.style.marginTop = "25px";
+                div.style.fontWeight = "bold";
+                vladanje.appendChild(div);
+                return;
+            }
+        }
+        function ukori(n) {
+            var ni = ucenici[n].brojIzostanaka[1];
+            let uk = -1;
+            if (ni > 4 && ni < 10) {
+                uk = 0;
+            }
+            if (ni > 9 && ni < 16) {
+                uk = 1;
+            }
+            if (ni > 15 && ni < 22) {
+                uk = 2
+            }
+            if (ni > 21 && ni < 25) {
+                uk = 3;
+            }
+            if (ni > 25) {
+                uk = 4;
+            }
+            localStorage.setItem("ukor", uk);
+            return;
+        }
+        function resetuj() {
+            document.getElementById("forma3").reset();
+            return;
+        }
+        function sacuvajObavestenja() {
+            var obavestenje = [];
+            var vrednosti = document.querySelectorAll("value");
+            for (i = 0; i < 6; i++) {
+                obavestenje[i] = vrednosti[i];
+            }
+            console.log(vrednosti);
+            return;
+        }
+        var dugme11 = document.getElementById("tabela");
+        var dugme21 = document.getElementById("vladanje");
+        dugme11.addEventListener("click", naslov(n));
+        dugme21.addEventListener("click", vladanje(n));
     </script>
 </body>
 

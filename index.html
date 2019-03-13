@@ -6,72 +6,70 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Elektronski dnevnik</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/fontawesome.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css\main.css">
+    <link rel="stylesheet" href="css\bootstrap.min.css">
+    <link rel="stylesheet" href="css\fontawesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <script src="js/main.js"></script>
-    <style>
-       
-    </style>
+    <script src="js\main.js"></script>
 </head>
 
 <body>
-    <main id="omotac">
-        <h1>ELEKTRONSKI DNEVNIK</h1>
-        <h1>Dobro došli</h1>
-        <div id="omotacDva">
-            <p>FORMULAR ZA PRIJAVU</p>
-            <p id="greska" style="color: red"></p>
-            <div class="nav justify-content-center nav-pills flex-column flex-md-row">
-                <a class="nav-link active" href="#prof" data-toggle="tab">Profesori</a>
-                <a class="nav-link" href="#rod" data-toggle="tab">Roditelji</a>
+    <main id="omotacGlavni" class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h1>ELEKTRONSKI DNEVNIK GIMNAZIJE CODE</h1>
+                <h1>Dobro došli</h1>
             </div>
-            <div class="tab-content py-5">
-                <div id="prof" class="tab-pane active">
-                    <form action="strana1.html" target="_blank" onsubmit="return provera1()" method="post">
-                        <div class="form-group">
-                            <label for="korisnickoProf">Korisničko ime</label>
-                            <div class="container">
-                                <i class="fa fa-user ikonica"></i>
-                                <input type="text" class="form-control" id="korisnickoProf"
-                                    placeholder="Vaše korisničko ime..." required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="lozinkaProf">Lozinka</label>
-                            <div class="container">
-                                <i class="fa fa-key ikonica"></i>
-                                <input type="password" class="form-control" id="lozinkaProf"
-                                    placeholder="Vaša lozinka..." required>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Prijavi se</button>
-                    </form>
+            <div id="omotacDva">
+                <p>FORMULAR ZA PRIJAVU</p>
+                <p id="greska" style="color: red"></p>
+                <div class="nav justify-content-center nav-pills flex-column flex-md-row">
+                    <a class="nav-link active" href="#prof" data-toggle="tab">Profesori</a>
+                    <a class="nav-link" href="#rod" data-toggle="tab">Roditelji</a>
                 </div>
-                <div id="rod" class="tab-pane fade">
-                    <form action="strana2.html" target="_blank" onsubmit="return provera2()" method="post">
-                        <div class="form-group">
-                            <label for="korisnickoIme">Korisničko ime</label>
-                            <div class="container">
-                                <i class="fa fa-user ikonica"></i><input type="text" class="form-control"
-                                    id="korisnickoIme" placeholder="Vaše korisničko ime..." required>
+                <div class="tab-content py-3">
+                    <div id="prof" class="tab-pane active">
+                        <form action="strana1.html" target="_blank" onsubmit="return provera1()" method="post">
+                            <div class="form-group">
+                                <label for="korisnickoProf">Korisničko ime</label>
+                                <div class="container">
+                                    <i class="fa fa-user ikonica"></i>
+                                    <input type="text" class="form-control" id="korisnickoProf"
+                                        placeholder="Vaše korisničko ime..." required>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="lozinka">Lozinka</label>
-                            <div class="container">
-                                <i class="fa fa-key ikonica"></i>
-                                <input type="password" class="form-control" id="lozinka" placeholder="Vaša lozinka..."
-                                    required>
+                            <div class="form-group">
+                                <label for="lozinkaProf">Lozinka</label>
+                                <div class="container">
+                                    <i class="fa fa-key ikonica"></i>
+                                    <input type="password" class="form-control" id="lozinkaProf"
+                                        placeholder="Vaša lozinka..." required>
+                                </div>
                             </div>
-                        </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox" name="zapamti"> Remember me</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Prijavi se</button>
-                    </form>
+                            <button type="submit" class="btn btn-primary">Prijavi se</button>
+                        </form>
+                    </div>
+                    <div id="rod" class="tab-pane fade">
+                        <form action="strana2.html" target="_blank" onsubmit="return provera2()" method="post">
+                            <div class="form-group">
+                                <label for="korisnickoIme">Korisničko ime</label>
+                                <div class="container">
+                                    <i class="fa fa-user ikonica"></i><input type="text" class="form-control"
+                                        id="korisnickoIme" placeholder="Vaše korisničko ime..." required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="lozinka">Lozinka</label>
+                                <div class="container">
+                                    <i class="fa fa-key ikonica"></i>
+                                    <input type="password" class="form-control" id="lozinka"
+                                        placeholder="Vaša lozinka..." required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Prijavi se</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -82,7 +80,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js\bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -6,18 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Strana 3</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <script src="js/main.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css\main.css">
+    <link rel="stylesheet" href="css\bootstrap.min.css">
+    <script src="js\main.js"></script>
 </head>
 
 <body>
-    <main id="omotac">
-        <h1></h1>
-        <div id="omotacDva">
-            <table id="tabela">
+    <main id="omotac" class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h1>ELEKTRONSKI DNEVNIK GIMNAZIJE CODE</h1>
+                <h1 id="naslov3"></h1>
+            </div>
+            <div id="omotacDva">
+                <table id="tabela3">
 
-            </table>
+                </table>
+            </div>
         </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -26,50 +31,56 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js\bootstrap.min.js"></script>
     <script>
-        function naslov() {
+        var n = localStorage.getItem("ucenik3");
+        function naslov2(n) {
             var naslov = document.getElementsByTagName("h1");
-            naslov.textContent = ucenici[0].ime + " " + ucenici[0].prezime;
+            naslov.textContent = niz[n];
             return;
         }
-        function ispis() {
-            var mm001 = document.getElementById("mm001");
+
+        function ispis(n) {
+            var tabela = document.getElementById("tabela3");
             for (i = 0; i < 12; i++) {
                 var tr = document.createElement("tr");
                 for (j = 0; j < 1; j++) {
                     var td = document.createElement("td");
                     td.textContent = predmeti[i];
                     tr.appendChild(td);
+                    for (k = 0; k < 4; k++) {
+                        var td = document.createElement("td");
+                        td.textContent = ucenici[0].ocene[j][k];
+                        td.setAttribute("title", tultip[j][k])
+                        tr.appendChild(td);
+                    }
                     var td = document.createElement("td");
-                    td.textContent = ucenici[0].ocene[i];
                     tr.appendChild(td);
-                    var td = document.createElement("td");
-                    tr.appendChild(td);
-                    var label=document.createElement("label");
-                    label.textContent=("Unesite ocenu:");
+                    var label = document.createElement("label");
+                    label.textContent = ("Unesite ocenu:");
                     td.appendChild(label);
                     var td = document.createElement("td");
                     tr.appendChild(td);
-                    var input=document.createElement("input");
-                    input.setAttribute("type","number");
-                    input.setAttribute("min","1");
-                    input.setAttribute("max","5");
+                    var input = document.createElement("input");
+                    input.setAttribute("type", "number");
+                    input.setAttribute("min", "1");
+                    input.setAttribute("max", "5");
                     td.appendChild(input);
                     var td = document.createElement("td");
                     tr.appendChild(td);
                     var button = document.createElement("button");
-                    button.textContent=("Potvrdi");
+                    button.textContent = ("Potvrdi");
                     td.appendChild(button);
-                    button.setAttribute("type","submit");
-                    button.setAttribute("class","btn btn-primary");
+                    button.setAttribute("type", "submit");
+                    button.setAttribute("class", "btn btn-primary");
                 }
-                mm001.appendChild(tr);
+                tabela.appendChild(tr);
             }
             return;
         }
-        naslov();
-        ispis();
+        //var n3 = localStorage.getItem(n3)
+        //naslov2(n3);
+        ispis(n);
     </script>
 </body>
 
