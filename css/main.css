@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body,html{
-    background-color: azure;
+    background-color: lightblue;
 }
 
 .hidden{
@@ -23,7 +23,7 @@ body,html{
     padding: 0 20px;
 }
 #omotac {
-    background-color: azure;
+    background-color: lightblue;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -144,11 +144,11 @@ ul {
     text-transform: uppercase;
 }
 
-.meseci .prev {
+.meseci .pret {
     float: left;
 }
 
-.meseci .next {
+.meseci .sledeci {
     float: right;
 }
 
