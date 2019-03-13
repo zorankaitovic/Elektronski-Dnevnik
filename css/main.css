@@ -1,21 +1,34 @@
 * {
     margin: auto;
+    font-family: 'Noto Sans TC', sans-serif;
+    box-sizing: border-box;
+}
+body,html{
+    background-color: azure;
 }
 
 .hidden{
     display: none;
 }
-#omotac {
+#omotacGlavni {
     background-image: url("../img/pozadina.jpg");
     background-size: cover;
     background-position: center;
-    height: 100vh;
     display: flex;
+    height: 100vh;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 0 20px;
+}
+#omotac {
+    background-color: azure;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 #omotacDva {
@@ -23,7 +36,7 @@
     border: 1px solid lightblue;
     padding: 20px;
     background: lightblue;
-    height: 80vh;
+    height: auto;
 }
 
 td {
@@ -57,3 +70,113 @@ table {
     min-width: 50px;
     text-align: center;
 }
+/* toggle dugme */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: dodgerblue;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "da";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: lightgoldenrodyellow;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: red;
+}
+
+input:checked+.slider:before {
+    transform: translateX(26px);
+    content: "ne";
+}
+#tabela,#tabela3 [title]:hover {
+    background: dodgerblue;
+    cursor: pointer;
+    color: black;
+}
+button {
+    width: 200px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.meseci {
+    padding: 10px;
+    width: 100%;
+    background: dodgerblue;
+    text-align: center;
+}
+
+.meseci ul {
+    margin: 0;
+    padding: 0;
+}
+
+.meseci ul li {
+    color: white;
+    text-transform: uppercase;
+}
+
+.meseci .prev {
+    float: left;
+}
+
+.meseci .next {
+    float: right;
+}
+
+#sedmica {
+    margin: 0;
+    padding: 10px 0;
+    background-color: lightgray;
+}
+
+#sedmica li {
+    display: inline-block;
+    width: 13.5%;
+    color: gray;
+    text-align: center;
+}
+
+#dani {
+    padding: 10px 0;
+    background: lightgray;
+    margin: 0;
+}
+
+#dani li {
+    list-style-type: none;
+    display: inline-block;
+    width: 13.5%;
+    height: 10vh;
+    text-align: left;
+    color: gray;
+}
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC');
