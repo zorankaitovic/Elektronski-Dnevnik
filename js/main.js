@@ -126,6 +126,332 @@ function proveraLozinke() {
     }
     return true;
 }
+var niz = [];
+localStorage.setItem("ucenici", JSON.stringify(ucenici));
+var obj = JSON.parse(localStorage.getItem("ucenici"));
+var brojac = korisnicko.length;
+function redosled() {
+    for (i = 0; i < brojac; i++) {
+        niz[i] = obj[i].prezime + " " + obj[i].ime;
+    }
+    var obj1 = JSON.parse(localStorage.getItem("ucenik"));
+    if (obj1 != null) {
+        niz.push(obj1.prezime + " " + obj1.ime);
+    }
+    niz = niz.sort();
+    spisak();
+    return;
+}
+function spisak() {
+    var lista = document.getElementById("lista");
+    var ul = document.createElement("ul");
+    lista.appendChild(ul);
+    for (i = 0; i < niz.length; i++) {
+        var li = document.createElement("li");
+        ul.appendChild(li);
+        var button = document.createElement("button");
+        button.textContent = niz[i];
+        li.appendChild(button);
+        button.setAttribute("onClick", 'location.href="strana3.html"');
+        button.setAttribute("class", "btn btn-outline-primary");
+        button.setAttribute("id", "d" + i);
+    }
+    return;
+}
+function noviUcenik() {
+    var ime = document.getElementById("imeNovi").value;
+    var prezime = document.getElementById("prezimeNovi").value;
+    var ucenik = {};
+    var korisnickoNovo = "";
+    ucenik.ime = ime;
+    ucenik.prezime = prezime;
+    ucenik.ocene = noveOcene;
+    ucenik.brojIzostanaka = noviIzostanci;
+    ucenik.vladanje = novoVladanje;
+    ucenik.rbroj = brojac + 1;
+    ucenici[brojac] = novi;
+    localStorage.setItem("ucenik", JSON.stringify(ucenik));
+    localStorage.setItem("ucenici", JSON.stringify(ucenici[brojac]));
+    korisnickoNovo = (ime.slice(0, 1) + prezime.slice(0, 1) + "00" + (brojac + 1)).toLowerCase();
+    if (korisnickoNovo.length == 5) {
+        korisnicko.push(korisnickoNovo);
+        localStorage.setItem("korisnicko", korisnickoNovo);
+    }
+    return;
+}
+function kalendarMesec() {
+    var datum = new Date();
+    var prviDan = 5;
+    var tekuciMesec = document.getElementById("mesec");
+    var ul = document.getElementById("sedmica");
+    tekuciMesec.textContent = meseci[datum.getMonth()].toUpperCase() + " " + datum.getFullYear();
+    for (i = 0; i < 7; i++) {
+        var li = document.createElement("li");
+        li.textContent = dani[i];
+        ul.appendChild(li);
+    }
+    var tekuciDan = datum.getDay();
+    var tekuciDatum = datum.getDate();
+    var ul = document.getElementById("dani");
+    var prethodni = datum.getMonth() - 1;
+    for (i = prviDan - 1; i > 0; i--) {
+        var li = document.createElement("li");
+        li.textContent = brojDana[prethodni] - i + 1;
+        ul.appendChild(li);
+    }
+    for (i = prviDan; i < brojDana[datum.getMonth()] + prviDan; i++) {
+        var li = document.createElement("li");
+        li.textContent = i - 4;
+        if (tekuciDatum == (i - 4)) {
+            li.style.backgroundColor = "blue";
+            li.style.color = "black";
+        }
+        if (i - 4 < tekuciDatum) {
+            li.style.backgroundColor = "gray";
+            li.style.color = "black";
+        }
+        if (i - 4 > tekuciDatum) {
+            for (j = 0; j < 5; j++) {
+                if ((i - 4 == j * 7 + 2) || (i - 4 == j * 7 + 3)) {
+                    li.style.backgroundColor = "red";
+                    li.style.color = "black";
+                }
+            }
+        }
+        ul.appendChild(li);
+    }
+    return;
+}
+
+
+var n2 = localStorage.getItem("ucenik");
+//d e o  za r o d i t e lj e
+//ispisivanje imena učenika
+function naslov(n2) {
+    var naslov = document.getElementById("naslov2");
+    naslov.textContent = ucenici[n2].ime + " " + ucenici[n2].prezime;
+    spisakPredmeta(n2);
+    return;
+}
+//spisak predmeta i ocene
+function spisakPredmeta(n2) {
+    var prosek;
+    var table = document.getElementById("tabela2");
+    for (i = 0; i < 12; i++) {
+        var tr = document.createElement("tr");
+        for (j = 0; j < 1; j++) {
+            var td = document.createElement("td");
+            td.textContent = predmeti[i];
+            tr.appendChild(td);
+            var ocena = 0;
+            for (k = 0; k < 4; k++) {
+                var td = document.createElement("td");
+                td.textContent = ucenici[n2].ocene[j][k];
+                ocena += ucenici[n2].ocene[i][k];
+                td.setAttribute("title", tultip[j][k])
+                tr.appendChild(td);
+            }
+            prosek = (ocena / 4).toFixed(2);
+            var td = document.createElement("td");
+            td.textContent = "Prosek: " + prosek;
+            tr.appendChild(td);
+        }
+        table.appendChild(tr);
+    }
+    return;
+}
+//vladanje
+function vladanje(n2) {
+    var table = document.getElementById("tabela21");
+    ukori(n2);
+    let uk = localStorage.getItem("ukor");
+    for (i = 0; i < 2; i++) {
+        var tr = document.createElement("tr");
+        for (j = 0; j < 1; j++) {
+            var td = document.createElement("td");
+            td.textContent = izostanci[i];
+            tr.appendChild(td);
+            var td = document.createElement("td");
+            td.textContent = ucenici[n2].brojIzostanaka[i];
+            tr.appendChild(td);
+        }
+        table.appendChild(tr);
+    }
+    if (ucenici[n2].brojIzostanaka[1] < 5) {
+        return;
+    } else {
+        var vladanje = document.getElementById("vladanje2");
+        var div = document.createElement("div");
+        div.textContent = "Zbog " + ucenici[n2].brojIzostanaka[1] + " neopravdanih izostanaka, učenik dobija kaznu: " + ukor[uk];
+        div.style.backgroundColor = "red";
+        div.style.padding = "10px";
+        div.style.width = "300px";
+        div.style.color = "black";
+        div.style.marginTop = "25px";
+        div.style.fontWeight = "bold";
+        vladanje.appendChild(div);
+        return;
+    }
+}
+function ukori(n2) {
+    var ni = ucenici[n2].brojIzostanaka[1];
+    let uk = -1;
+    if (ni > 4 && ni < 10) {
+        uk = 0;
+    }
+    if (ni > 9 && ni < 16) {
+        uk = 1;
+    }
+    if (ni > 15 && ni < 22) {
+        uk = 2
+    }
+    if (ni > 21 && ni < 25) {
+        uk = 3;
+    }
+    if (ni > 25) {
+        uk = 4;
+    }
+    localStorage.setItem("ukor", uk);
+    return;
+}
+function resetuj() {
+    document.getElementById("forma2").reset();
+    return;
+}
+function sacuvajObavestenja() {
+    var obavestenje = [];
+    var vrednosti = document.querySelectorAll("value");
+    for (i = 0; i < 6; i++) {
+        obavestenje[i] = vrednosti[i];
+    }
+    console.log(vrednosti);
+    return;
+}
+
+var n3 = localStorage.getItem("ucenik3");
+function naslov3(n3) {
+    var naslov = document.getElementById("naslov3");
+    naslov.textContent = ucenici[n3].ime + " " + ucenici[n3].prezime;
+    ispis(n3)
+    return;
+}
+function ispis(n3) {
+    var tabela = document.getElementById("tabela3");
+    for (i = 0; i < 12; i++) {
+        var tr = document.createElement("tr");
+        for (j = 0; j < 1; j++) {
+            var td = document.createElement("td");
+            td.textContent = predmeti[i];
+            tr.appendChild(td);
+            for (k = 0; k < 4; k++) {
+                var td = document.createElement("td");
+                td.textContent = ucenici[n3].ocene[j][k];
+                td.setAttribute("title", tultip[j][k])
+                tr.appendChild(td);
+            }
+            var td = document.createElement("td");
+            tr.appendChild(td);
+            td.setAttribute("class", "d-none d-lg-inline-block")
+            var label = document.createElement("label");
+            label.textContent = ("Unesite ocenu:");
+            td.appendChild(label);
+            label.setAttribute("class", "d-none d-lg-inline-block")
+            var td = document.createElement("td");
+            tr.appendChild(td);
+            td.setAttribute("class", "d-none d-lg-inline-block")
+            var input = document.createElement("input");
+            input.setAttribute("type", "number");
+            input.setAttribute("min", "1");
+            input.setAttribute("max", "5");
+            td.appendChild(input);
+            var td = document.createElement("td");
+            tr.appendChild(td);
+            td.setAttribute("class", "d-none d-lg-inline-block")
+            var button = document.createElement("button");
+            button.textContent = ("Potvrdi");
+            td.appendChild(button);
+            button.setAttribute("type", "submit");
+            button.setAttribute("class", "btn btn-primary");
+        }
+        tabela.appendChild(tr);
+    }
+    return;
+}
+function vladanje3(n3) {
+    var table = document.getElementById("tabela31");
+    ukori(n3);
+    let uk = localStorage.getItem("ukor");
+    for (i = 0; i < 2; i++) {
+        var tr = document.createElement("tr");
+        for (j = 0; j < 1; j++) {
+            var td = document.createElement("td");
+            td.textContent = izostanci[i];
+            tr.appendChild(td);
+            var td = document.createElement("td");
+            td.textContent = ucenici[n3].brojIzostanaka[i];
+            tr.appendChild(td);
+            var td = document.createElement("td");
+            tr.appendChild(td);
+            var label = document.createElement("label");
+            label.textContent = ("Unesite izostanak:");
+            td.appendChild(label);
+            label.setAttribute("class", "d-none d-lg-inline-block")
+            var td = document.createElement("td");
+            tr.appendChild(td);
+            td.setAttribute("class", "d-none d-lg-inline-block")
+            var input = document.createElement("input");
+            input.setAttribute("type", "number");
+            input.setAttribute("min", "1");
+            input.setAttribute("max", "1");
+            td.appendChild(input);
+            var td = document.createElement("td");
+            tr.appendChild(td);
+            td.setAttribute("class", "d-none d-lg-inline-block")
+            var button = document.createElement("button");
+            button.textContent = ("Potvrdi");
+            td.appendChild(button);
+            button.setAttribute("type", "submit");
+            button.setAttribute("class", "btn btn-primary");
+        }
+        table.appendChild(tr);
+    }
+    if (ucenici[n3].brojIzostanaka[1] < 5) {
+        return;
+    } else {
+        var vladanje = document.getElementById("vladanje3");
+        var div = document.createElement("div");
+        div.textContent = "Zbog " + ucenici[n3].brojIzostanaka[1] + " neopravdanih izostanaka, učenik dobija kaznu: " + ukor[uk];
+        div.style.backgroundColor = "red";
+        div.style.padding = "10px";
+        div.style.width = "300px";
+        div.style.color = "black";
+        div.style.marginTop = "25px";
+        div.style.fontWeight = "bold";
+        vladanje.appendChild(div);
+        return;
+    }
+}
+function ukori(n3) {
+    var ni = ucenici[n3].brojIzostanaka[1];
+    let uk = -1;
+    if (ni > 4 && ni < 10) {
+        uk = 0;
+    }
+    if (ni > 9 && ni < 16) {
+        uk = 1;
+    }
+    if (ni > 15 && ni < 22) {
+        uk = 2
+    }
+    if (ni > 21 && ni < 25) {
+        uk = 3;
+    }
+    if (ni > 25) {
+        uk = 4;
+    }
+    localStorage.setItem("ukor", uk);
+    return;
+}
 
 
 
