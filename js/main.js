@@ -2,44 +2,50 @@ var ucenici = {};
 ucenici[0] = {
     ime: "Marko",
     prezime: "Marković",
-    ocene: [3, 3, 4, 5, 5, 4, 3, 2, 2, 3, 4, 5],
-    brojIzostanaka: [4, 11],
+    ocene: [[3, 4, 5, 2], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5]],
+    brojIzostanaka: [4, 1],
     vladanje: "2",
+    rbroj: 0,
 }
 ucenici[1] = {
     ime: "Janko",
     prezime: "Janković",
-    ocene: [2, 3, 4, 5, 5, 4, 3, 2, 2, 3, 4, 5],
+    ocene: [[3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5]],
     brojIzostanaka: [4, 5],
     vladanje: "2",
+    rbroj: 1,
 }
 ucenici[2] = {
     ime: "Petar",
     prezime: "Petrović",
-    ocene: [2, 3, 4, 5, 5, 4, 3, 2, 2, 3, 4, 5],
-    brojIzostanaka: [4, 5],
+    ocene: [[3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5]],
+    brojIzostanaka: [4, 15],
     vladanje: "2",
+    rbroj: 2,
 }
 ucenici[3] = {
     ime: "Ivana",
     prezime: "Ivanović",
-    ocene: [2, 3, 4, 5, 5, 4, 3, 2, 2, 3, 4, 5],
+    ocene: [[3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5]],
     brojIzostanaka: [4, 5],
     vladanje: "2",
+    rbroj: 3,
 }
 ucenici[4] = {
     ime: "Jovana",
     prezime: "Jovanović",
-    ocene: [2, 3, 4, 5, 5, 4, 3, 2, 2, 3, 4, 5],
+    ocene: [[3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5]],
     brojIzostanaka: [4, 5],
     vladanje: "2",
+    rbroj: 4,
 }
 ucenici[5] = {
     ime: "Boško",
     prezime: "Bošković",
-    ocene: [2, 3, 4, 5, 5, 4, 3, 2, 2, 3, 4, 5],
+    ocene: [[3, 4, 5, 2], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5]],
     brojIzostanaka: [4, 5],
     vladanje: "2",
+    rbroj: 5,
 }
 profesor = {
     userName: "profesor",
@@ -50,9 +56,28 @@ var lozinka = ["00001", "00002", "00003", "00004", "00005", "00006"]
 var predmeti = ["Srpski jezik i književnost", "Engleski jezik", "Francuski jezik", "Ustav i prava građana",
     "Sociologija", "Filozofija", "Biologija", "Matematika", "Fizika", "Hemija", "Računarstvo i informatika",
     "Fizičko vaspitanje"];
-var ukor = ["Opomena odeljenskog staresine", "Ukor odeljenskog staresine", "Ukor Odeljenskog veca",
-    "Ukor direktora skole", "Ukor Nastavnickog veca"];
-var izostanci = ["Opravdani izostanci", "Neopravdani izostanci"]
+var ukor = ["Opomena odeljenjskog starešine", "Ukor odeljenjskog starešine", "Ukor Odeljenjskog veća",
+    "Ukor direktora škole", "Ukor Nastavničkog veća"];
+var izostanci = ["Opravdani izostanci", "Neopravdani izostanci"];
+var meseci = ["Januar", "Februar", "Mart", "April", "Maj", "Jun", "Jul", "Avgust", "Septembar", "Oktobar", "Novembar", "Decembar"];
+var dani = ["PON", "UTO", "SRE", "ČET", "PET", "SUB", "NED"];
+var brojDana = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+var tultip = [
+    ["10.10. Pismeni zadatak", "22.11. Kontrolni zadatak", "mjk", "kkk"],
+    ["19.10. Kontrolni zadatak", "7.12. Pismeni zadatak", "mjk", "kkk"],
+    ["11.12. Kontrolni zadatak", "25.12. Pismeni zadatak", "mjk", "kkk"],
+    ["2.11. Kontrolni zadatak", "bcd", "mjk", "kkk"],
+    ["12.10. Kontrolni zadatak", "21.11. Kontrolni zadatak", "mjk", "kkk"],
+    ["8.10. Kontrolni zadatak", "bcd", "mjk", "kkk"],
+    ["19.11. Kontrolni zadatak", "bcd", "mjk", "kkk"],
+    ["4.10. Kontrolni zadatak", "1.11. Pismeni zadatak", "6.12. Kontrolni zadatak", "10.01. Pismeni zadatak"],
+    ["24.09. Kontrolni zadatak", "5.12. Pismeni test", "mjk", "kkk"],
+    ["24.10. Pismeni test", "9.1. Pismeni test", "mjk", "kkk"],
+    ["11.12. Praktičan rad", "bcd", "mjk", "kkk"],
+    ["abc", "bcd", "mjk", "kkk"]];
+var noveOcene = ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"];
+var noviIzostanci = ["-", "-"];
+var novoVladanje = "-";
 // provera korisnickog imena i lozinke za profesora
 function provera1() {
     return proveraProfesora() && proveraLozinkeProf();
@@ -101,79 +126,6 @@ function proveraLozinke() {
     }
     return true;
 }
-function spisak(n) {
-    var table = document.getElementById("tabela");
-    for (i = 0; i < 12; i++) {
-        var tr = document.createElement("tr");
-        for (j = 0; j < 1; j++) {
-            var td = document.createElement("td");
-            td.textContent = predmeti[i];
-            tr.appendChild(td);
-            var td = document.createElement("td");
-            td.textContent = ucenici[n].ocene[i];
-            tr.appendChild(td);
-        }
-        table.appendChild(tr);
-    }
-    return;
-}
-function naslov(n) {
-    var naslov = document.getElementById("omotac").firstElementChild;
-    naslov.textContent = ucenici[n].ime + " " + ucenici[n].prezime;
-    spisak(n);
-    return;
-}
 
-function vladanje(n) {
-    var table = document.getElementById("tabela1");
-    ukori(n);
-    var j = localStorage.getItem("ukor")
-    for (i = 0; i < 2; i++) {
-        var tr = document.createElement("tr");
-        for (j = 0; j < 1; j++) {
-            var td = document.createElement("td");
-            td.textContent = izostanci[i];
-            tr.appendChild(td);
-            var td = document.createElement("td");
-            td.textContent = ucenici[n].brojIzostanaka[i];
-            tr.appendChild(td);
-        }
-        table.appendChild(tr);
-    }
-    var vladanje = document.getElementById("vladanje");
-    var div = document.createElement("div");
-    div.textContent = "Zbog " + ucenici[n].brojIzostanaka[1] + " neopravdanih izostanaka, ucenik dobija kaznu: " + ukor[j];
-    div.style.backgroundColor = "red";
-    div.style.padding = "10px";
-    div.style.width = "300px";
-    div.style.color = "black";
-    div.style.marginTop = "25px";
-    div.style.fontWeight = "bold";
-    vladanje.appendChild(div);
-    return;
-}
-function ukori(n) {
-    var ni = ucenici[n].brojIzostanaka[1];
-    var uk = -1;
-    if (ni > 4 && ni < 10) {
-        uk = 0;
-    }
-    if (ni > 9 && ni < 16) {
-        uk = 1;
-    }
-    if (ni > 15 && ni < 22) {
-        uk = 2
-    }
-    if (ni > 21 && ni < 25) {
-        uk = 3;
-    }
-    if (ni > 25) {
-        uk = 4;
-    }
-    localStorage.setItem("ukor", uk);
-    return;
-}
-function resetuj() {
-    document.getElementById("forma3").reset();
-    return;
-}
+
+
