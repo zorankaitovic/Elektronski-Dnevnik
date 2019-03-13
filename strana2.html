@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Strana 2</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" media="screen" href="css\main.css">
     <link rel="stylesheet" href="css\bootstrap.min.css">
     <script src="js\main.js"></script>
@@ -23,20 +23,20 @@
             </div>
             <div id="omotacDva">
                 <div class="nav justify-content-center nav-pills flex-column flex-md-row">
-                    <a class="nav-link active" href="#oceneUcenika" data-toggle="tab">Ocene</a>
-                    <a class="nav-link" href="#vladanje" data-toggle="tab">Vladanje i izostanci</a>
-                    <a class="nav-link" href="#obavestenja" data-toggle="tab">Obaveštenja</a>
+                    <a class="nav-link active" href="#ocene2" data-toggle="tab">Ocene</a>
+                    <a class="nav-link" href="#vladanje2" data-toggle="tab">Vladanje i izostanci</a>
+                    <a class="nav-link" href="#obavestenja2" data-toggle="tab">Obaveštenja</a>
                 </div>
                 <div class="tab-content py-3">
-                    <div id="oceneUcenika" class="tab-pane active">
-                        <table id="tabela">
+                    <div id="ocene2" class="tab-pane active">
+                        <table id="tabela2">
                         </table>
                     </div>
-                    <div id="vladanje" class="tab-pane fade">
-                        <table id="tabela1"></table>
+                    <div id="vladanje2" class="tab-pane fade">
+                        <table id="tabela21"></table>
                     </div>
-                    <div id="obavestenja" class="tab-pane fade">
-                        <form id="forma3">
+                    <div id="obavestenja2" class="tab-pane fade">
+                        <form id="forma2">
                             <table>
                                 <tr>
                                     <td>E-mail obaveštenje o novoj oceni</td>
@@ -99,113 +99,10 @@
         crossorigin="anonymous"></script>
     <script src="js\bootstrap.min.js"></script>
     <script>
-        var n = localStorage.getItem("ucenik");
-        //d e o  za r o d i t e lj e
-        //ispisivanje imena učenika
-        function naslov(n) {
-            var naslov = document.getElementById("naslov2");
-            naslov.textContent = ucenici[n].ime + " " + ucenici[n].prezime;
-            spisakPredmeta(n);
-            return;
-        }
-        //spisak predmeta i ocene
-        function spisakPredmeta(n) {
-            var prosek;
-            var table = document.getElementById("tabela");
-            for (i = 0; i < 12; i++) {
-                var tr = document.createElement("tr");
-                for (j = 0; j < 1; j++) {
-                    var td = document.createElement("td");
-                    td.textContent = predmeti[i];
-                    tr.appendChild(td);
-                    var ocena = 0;
-                    for (k = 0; k < 4; k++) {
-                        var td = document.createElement("td");
-                        td.textContent = ucenici[n].ocene[j][k];
-                        ocena += ucenici[n].ocene[i][k];
-                        td.setAttribute("title", tultip[j][k])
-                        tr.appendChild(td);
-                    }
-                    prosek = (ocena / 4).toFixed(2);
-                    var td = document.createElement("td");
-                    td.textContent = "Prosek: " + prosek;
-                    tr.appendChild(td);
-                }
-                table.appendChild(tr);
-            }
-            return;
-        }
-        //vladanje
-        function vladanje(n) {
-            var table = document.getElementById("tabela1");
-            ukori(n);
-            let uk = localStorage.getItem("ukor");
-            for (i = 0; i < 2; i++) {
-                var tr = document.createElement("tr");
-                for (j = 0; j < 1; j++) {
-                    var td = document.createElement("td");
-                    td.textContent = izostanci[i];
-                    tr.appendChild(td);
-                    var td = document.createElement("td");
-                    td.textContent = ucenici[n].brojIzostanaka[i];
-                    tr.appendChild(td);
-                }
-                table.appendChild(tr);
-            }
-            if (ucenici[n].brojIzostanaka[1] < 5) {
-                return;
-            } else {
-                var vladanje = document.getElementById("vladanje");
-                var div = document.createElement("div");
-                div.textContent = "Zbog " + ucenici[n].brojIzostanaka[1] + " neopravdanih izostanaka, učenik dobija kaznu: " + ukor[uk];
-                div.style.backgroundColor = "red";
-                div.style.padding = "10px";
-                div.style.width = "300px";
-                div.style.color = "black";
-                div.style.marginTop = "25px";
-                div.style.fontWeight = "bold";
-                vladanje.appendChild(div);
-                return;
-            }
-        }
-        function ukori(n) {
-            var ni = ucenici[n].brojIzostanaka[1];
-            let uk = -1;
-            if (ni > 4 && ni < 10) {
-                uk = 0;
-            }
-            if (ni > 9 && ni < 16) {
-                uk = 1;
-            }
-            if (ni > 15 && ni < 22) {
-                uk = 2
-            }
-            if (ni > 21 && ni < 25) {
-                uk = 3;
-            }
-            if (ni > 25) {
-                uk = 4;
-            }
-            localStorage.setItem("ukor", uk);
-            return;
-        }
-        function resetuj() {
-            document.getElementById("forma3").reset();
-            return;
-        }
-        function sacuvajObavestenja() {
-            var obavestenje = [];
-            var vrednosti = document.querySelectorAll("value");
-            for (i = 0; i < 6; i++) {
-                obavestenje[i] = vrednosti[i];
-            }
-            console.log(vrednosti);
-            return;
-        }
-        var dugme11 = document.getElementById("tabela");
-        var dugme21 = document.getElementById("vladanje");
-        dugme11.addEventListener("click", naslov(n));
-        dugme21.addEventListener("click", vladanje(n));
+        var dugme21 = document.getElementById("tabela2");
+        var dugme22 = document.getElementById("vladanje2");
+        dugme21.addEventListener("click", naslov(n2));
+        dugme22.addEventListener("click", vladanje(n2));
     </script>
 </body>
 

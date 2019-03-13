@@ -5,12 +5,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Strana 1</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" media="screen" href="css\main.css">
     <link rel="stylesheet" href="css\bootstrap.min.css">
     <script src="js\main.js"></script>
     <style>
-       
+
     </style>
 </head>
 
@@ -28,9 +28,10 @@
                     <a class="nav-link" href="#kalendar" data-toggle="tab">Kalendar rada</a>
                 </div>
                 <div class="tab-content py-3">
-                    <div id="lista" class="tab-pane active"></div>
+                    <div id="lista" class="tab-pane active">
+                    </div>
                     <div id="novi" class="tab-pane fade">
-                        <form onclick="return noviUcenik()" method="POST">
+                        <form onClick="return noviUcenik()" method="POST">
                             <div class="form-group">
                                 <label for="imeNovi">Ime učenika</label>
                                 <input type="text" class="form-control" id="imeNovi" placeholder="Ime učenika..."
@@ -47,8 +48,8 @@
                     <div id="kalendar" class="tab-pane fade">
                         <div class="meseci">
                             <ul>
-                                <li class="prev"><a href="#">&#10094;</a></li>
-                                <li class="next"><a href="#">&#10095;</a></li>
+                                <li class="pret"><a href="#">&#10094;</a></li>
+                                <li class="sledeci"><a href="#">&#10095;</a></li>
                                 <li id="mesec"></li>
                             </ul>
                         </div>
@@ -69,105 +70,87 @@
         crossorigin="anonymous"></script>
     <script src="js\bootstrap.min.js"></script>
     <script>
-        var niz = [];
-        localStorage.setItem("ucenici", JSON.stringify(ucenici));
-        var obj = JSON.parse(localStorage.getItem("ucenici"));
-        var brojac = korisnicko.length;
-        function redosled() {
-            for (i = 0; i < brojac; i++) {
-                niz[i] = obj[i].prezime + " " + obj[i].ime;
-            }
-            var obj1 = JSON.parse(localStorage.getItem("ucenik"));
-            if(obj1!=null){
-            niz.push(obj1.prezime + " " + obj1.ime);
-            }
-            niz = niz.sort();
-            spisak();
-            return;
-        }
-        function spisak() {
-            var lista = document.getElementById("lista");
-            var ul = document.createElement("ul");
-            lista.appendChild(ul);
-            for (i = 0; i < niz.length; i++) {
-                var li = document.createElement("li");
-                ul.appendChild(li);
-                var button = document.createElement("button");
-                button.textContent = niz[i];
-                li.appendChild(button);
-                button.setAttribute("id", "ddugme" + i);
-                button.setAttribute("onclick", "window.location.href='strana3.html'");
-                button.setAttribute("class", "btn btn-outline-primary");
-            }
-            return;
-        }
-        function noviUcenik() {
-            var ime = document.getElementById("imeNovi").value;
-            var prezime = document.getElementById("prezimeNovi").value;
-            var ucenik = {};
-            var korisnickoNovo = "";
-            ucenik.ime = ime;
-            ucenik.prezime = prezime;
-            ucenik.ocene = noveOcene;
-            ucenik.brojIzostanaka = noviIzostanci;
-            ucenik.vladanje = novoVladanje;
-            ucenik.rbroj = brojac+1;
-            localStorage.setItem("ucenik", JSON.stringify(ucenik));
-            korisnickoNovo = (ime.slice(0, 1) + prezime.slice(0, 1) + "00" + (brojac + 1)).toLowerCase();
-            if(korisnickoNovo.length==5){
-                korisnicko.push(korisnickoNovo);
-                localStorage.setItem("korisnicko",korisnickoNovo);
-            }
-            
-            return;
-        }
-        function kalendarMesec() {
-            var datum = new Date();
-            var prviDan = 5;
-            var tekuciMesec = document.getElementById("mesec");
-            var ul = document.getElementById("sedmica");
-            tekuciMesec.textContent = meseci[datum.getMonth()].toUpperCase() + " " + datum.getFullYear();
-            for (i = 0; i < 7; i++) {
-                var li = document.createElement("li");
-                li.textContent = dani[i];
-                ul.appendChild(li);
-            }
-            var tekuciDan = datum.getDay();
-            var tekuciDatum = datum.getDate();
-            var ul = document.getElementById("dani");
-            var prethodni = datum.getMonth() - 1;
-            for (i = prviDan - 1; i > 0; i--) {
-                var li = document.createElement("li");
-                li.textContent = brojDana[prethodni] - i + 1;
-                ul.appendChild(li);
-            }
-            for (i = prviDan; i < brojDana[datum.getMonth()] + prviDan; i++) {
-                var li = document.createElement("li");
-                li.textContent = i - 4;
-                if (tekuciDatum == (i - 4)) {
-                    li.style.backgroundColor = "blue";
-                    li.style.color = "black";
-                }
-                if (i - 4 < tekuciDatum) {
-                    li.style.backgroundColor = "gray";
-                    li.style.color = "black";
-                }
-                if (i - 4 > tekuciDatum) {
-                    for (j = 0; j < 5; j++) {
-                        if ((i - 4 == j * 7 + 2) || (i - 4 == j * 7 + 3)) {
-                            li.style.backgroundColor = "red";
-                            li.style.color = "black";
-                        }
-                    }
-                }
-                ul.appendChild(li);
-            }
-            return;
-        }
         var dugme1 = document.getElementById("lista");
-        var dugme3 = document.getElementById("kalendar");
+        var dugme2 = document.getElementById("kalendar");
         dugme1.addEventListener("click", redosled());
-        dugme3.addEventListener("click", kalendarMesec());
+        dugme2.addEventListener("click", kalendarMesec());
+        var d0 = document.getElementById("d0");
+        var d1 = document.getElementById("d1");
+        var d2 = document.getElementById("d2");
+        var d3 = document.getElementById("d3");
+        var d4 = document.getElementById("d4");
+        var d5 = document.getElementById("d5");
+        var d6 = document.getElementById("d6");
+        d0.addEventListener("click", function () {
+            var n = d0.innerHTML;
+            var io = n.indexOf(" ");
+            n = n.slice(0, io);
+            for (i = 0; i < korisnicko.length; i++) {
+                if (n == ucenici[i].prezime) {
+                    localStorage.setItem("ucenik3", ucenici[i].rbroj)
+                }
+            }
+        });
+        d1.addEventListener("click", function () {
+            var n = d1.innerHTML;
+            var io = n.indexOf(" ");
+            n = n.slice(0, io);
+            for (i = 0; i < korisnicko.length; i++) {
+                if (n == ucenici[i].prezime) {
+                    localStorage.setItem("ucenik3", ucenici[i].rbroj)
+                }
+            }
+        });
+        d2.addEventListener("click", function () {
+            var n = d2.innerHTML;
+            var io = n.indexOf(" ");
+            n = n.slice(0, io);
+            for (i = 0; i < korisnicko.length; i++) {
+                if (n == ucenici[i].prezime) {
+                    localStorage.setItem("ucenik3", ucenici[i].rbroj)
+                }
+            }
+        });
+        d3.addEventListener("click", function () {
+            var n = d3.innerHTML;
+            var io = n.indexOf(" ");
+            n = n.slice(0, io);
+            for (i = 0; i < korisnicko.length; i++) {
+                if (n == ucenici[i].prezime) {
+                    localStorage.setItem("ucenik3", ucenici[i].rbroj)
+                }
+            }
+        });
+        d4.addEventListener("click", function () {
+            var n = d5.innerHTML;
+            var io = n.indexOf(" ");
+            n = n.slice(0, io);
+            for (i = 0; i < korisnicko.length; i++) {
+                if (n == ucenici[i].prezime) {
+                    localStorage.setItem("ucenik3", ucenici[i].rbroj)
+                }
+            }
+        });
+        d5.addEventListener("click", function () {
+            var n = d5.innerHTML;
+            var io = n.indexOf(" ");
+            n = n.slice(0, io);
+            for (i = 0; i < korisnicko.length; i++) {
+                if (n == ucenici[i].prezime) {
+                    localStorage.setItem("ucenik3", ucenici[i].rbroj)
+                }
+            }
+        });
+        d6.addEventListener("click", function () {
+            var n = d6.innerHTML;
+            let io = n.indexOf(" ");
+            n = n.slice(0, io);
+            for (i = 0; i < korisnicko.length; i++) {
+                if (n == ucenici[i].prezime) {
+                    localStorage.setItem("ucenik3", ucenici[i].rbroj)
+                }
+            }
+        });
     </script>
 </body>
 

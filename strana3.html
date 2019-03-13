@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Strana 3</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" media="screen" href="css\main.css">
     <link rel="stylesheet" href="css\bootstrap.min.css">
     <script src="js\main.js"></script>
@@ -19,11 +19,21 @@
                 <h1 id="naslov3"></h1>
             </div>
             <div id="omotacDva">
-                <table id="tabela3">
+                <div class="nav justify-content-center nav-pills flex-column flex-md-row">
+                    <a class="nav-link active" href="#ocene3" data-toggle="tab">Ocene</a>
+                    <a class="nav-link" href="#vladanje3" data-toggle="tab">Vladanje i izostanci</a>
+                </div>
+                <div class="tab-content py-3">
+                    <div id="ocene3" class="tab-pane active">
+                        <table id="tabela3">
+                        </table>
+                    </div>
+                    <div id="vladanje3" class="tab-pane fade">
+                        <table id="tabela31"></table>
+                    </div>
 
-                </table>
+                </div>
             </div>
-        </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -33,54 +43,10 @@
         crossorigin="anonymous"></script>
     <script src="js\bootstrap.min.js"></script>
     <script>
-        var n = localStorage.getItem("ucenik3");
-        function naslov2(n) {
-            var naslov = document.getElementsByTagName("h1");
-            naslov.textContent = niz[n];
-            return;
-        }
-
-        function ispis(n) {
-            var tabela = document.getElementById("tabela3");
-            for (i = 0; i < 12; i++) {
-                var tr = document.createElement("tr");
-                for (j = 0; j < 1; j++) {
-                    var td = document.createElement("td");
-                    td.textContent = predmeti[i];
-                    tr.appendChild(td);
-                    for (k = 0; k < 4; k++) {
-                        var td = document.createElement("td");
-                        td.textContent = ucenici[0].ocene[j][k];
-                        td.setAttribute("title", tultip[j][k])
-                        tr.appendChild(td);
-                    }
-                    var td = document.createElement("td");
-                    tr.appendChild(td);
-                    var label = document.createElement("label");
-                    label.textContent = ("Unesite ocenu:");
-                    td.appendChild(label);
-                    var td = document.createElement("td");
-                    tr.appendChild(td);
-                    var input = document.createElement("input");
-                    input.setAttribute("type", "number");
-                    input.setAttribute("min", "1");
-                    input.setAttribute("max", "5");
-                    td.appendChild(input);
-                    var td = document.createElement("td");
-                    tr.appendChild(td);
-                    var button = document.createElement("button");
-                    button.textContent = ("Potvrdi");
-                    td.appendChild(button);
-                    button.setAttribute("type", "submit");
-                    button.setAttribute("class", "btn btn-primary");
-                }
-                tabela.appendChild(tr);
-            }
-            return;
-        }
-        //var n3 = localStorage.getItem(n3)
-        //naslov2(n3);
-        ispis(n);
+        var dugme31 = document.getElementById("tabela3");
+        var dugme32 = document.getElementById("vladanje3");
+        dugme31.addEventListener("click", naslov3(n3));
+        dugme32.addEventListener("click", vladanje3(n3));
     </script>
 </body>
 
