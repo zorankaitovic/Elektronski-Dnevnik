@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" lang="sr">
+<html lang="sr">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Strana 3</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" media="screen" href="css\main.css">
-    <link rel="stylesheet" href="css\bootstrap.min.css">
-    <script src="js\main.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/main.js"></script>
 </head>
 
 <body>
@@ -16,9 +16,9 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <h1>ELEKTRONSKI DNEVNIK GIMNAZIJE CODE</h1>
-                <h1 id="naslov3"></h1>
+                <h1 id="naslov3">Učenik</h1>
             </div>
-            <div id="omotacDva">
+            <div id="omotacDva" class="tab-content py-3">
                 <div class="nav justify-content-center nav-pills flex-column flex-md-row">
                     <a class="nav-link active" href="#ocene3" data-toggle="tab">Ocene</a>
                     <a class="nav-link" href="#vladanje3" data-toggle="tab">Vladanje i izostanci</a>
@@ -26,14 +26,257 @@
                 <div class="tab-content py-3">
                     <div id="ocene3" class="tab-pane active">
                         <table id="tabela3">
+                            <tr id="tr3">
+                                <td>Srpski jezik i književnost</td>
+                                <td class="td3"></td>
+                                <td class="td31"></td>
+                                <td class="td32"></td>
+                                <td class="td33"></td>
+                                <td class="td34"></td>
+                                <td class="d-none d-lg-inline-block">
+                                    <form action="strana1.html" onSubmit="return upisiOcenu()" method="post">
+                                        <label class="d-none d-lg-inline-block">Unesite ocenu:</label>
+                                        <input type="number" id="ocena0" min="1" max="5">
+                                        <label class="d-none d-lg-inline-block">Komentar:</label>
+                                        <input type="text" id="kom0">
+                                        <button type="submit" class="btn btn-primary">Potvrdi</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Engleski jezik</td>
+                                <td class="td3"></td>
+                                <td class="td31"></td>
+                                <td class="td32"></td>
+                                <td class="td33"></td>
+                                <td class="td34"></td>
+                                <td class="d-none d-lg-inline-block">
+                                    <form action="strana1.html" target="_blank" onSubmit="return provera1()"
+                                        method="post">
+                                        <label class="d-none d-lg-inline-block">Unesite ocenu:</label>
+                                        <input type="number" id="ocena1" min="1" max="5">
+                                        <label class="d-none d-lg-inline-block">Komentar:</label>
+                                        <input type="text" id="kom1">
+                                        <button type="submit" class="btn btn-primary">Potvrdi</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Francuski jezik</td>
+                                <td class="td3"></td>
+                                <td class="td31"></td>
+                                <td class="td32"></td>
+                                <td class="td33"></td>
+                                <td class="td34"></td>
+                                <td class="d-none d-lg-inline-block">
+                                    <form action="strana1.html" target="_blank" onSubmit="return provera1()"
+                                        method="post">
+                                        <label class="d-none d-lg-inline-block">Unesite ocenu:</label>
+                                        <input type="number" id="ocena2" min="1" max="5">
+                                        <label class="d-none d-lg-inline-block">Komentar:</label>
+                                        <input type="text" id="kom2">
+                                        <button type="submit" class="btn btn-primary">Potvrdi</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ustav i prava građana</td>
+                                <td class="td3"></td>
+                                <td class="td31"></td>
+                                <td class="td32"></td>
+                                <td class="td33"></td>
+                                <td class="td34"></td>
+                                <td class="d-none d-lg-inline-block">
+                                    <form action="strana1.html" target="_blank" onSubmit="return provera1()"
+                                        method="post">
+                                        <label class="d-none d-lg-inline-block">Unesite ocenu:</label>
+                                        <input type="number" id="ocena3" min="1" max="5">
+                                        <label class="d-none d-lg-inline-block">Komentar:</label>
+                                        <input type="text" id="kom3">
+                                        <button type="submit" class="btn btn-primary">Potvrdi</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Sociologija</td>
+                                <td class="td3"></td>
+                                <td class="td31"></td>
+                                <td class="td32"></td>
+                                <td class="td33"></td>
+                                <td class="td34"></td>
+                                <td class="d-none d-lg-inline-block">
+                                    <form action="strana1.html" target="_blank" onSubmit="return provera1()"
+                                        method="post">
+                                        <label class="d-none d-lg-inline-block">Unesite ocenu:</label>
+                                        <input type="number" id="ocena4" min="1" max="5">
+                                        <label class="d-none d-lg-inline-block">Komentar:</label>
+                                        <input type="text" id="kom4">
+                                        <button type="submit" class="btn btn-primary">Potvrdi</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Filozofija</td>
+                                <td class="td3"></td>
+                                <td class="td31"></td>
+                                <td class="td32"></td>
+                                <td class="td33"></td>
+                                <td class="td34"></td>
+                                <td class="d-none d-lg-inline-block">
+                                    <form action="strana1.html" target="_blank" onSubmit="return provera1()"
+                                        method="post">
+                                        <label class="d-none d-lg-inline-block">Unesite ocenu:</label>
+                                        <input type="number" id="ocena5" min="1" max="5">
+                                        <label class="d-none d-lg-inline-block">Komentar:</label>
+                                        <input type="text" id="kom5">
+                                        <button type="submit" class="btn btn-primary">Potvrdi</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Biologija</td>
+                                <td class="td3"></td>
+                                <td class="td31"></td>
+                                <td class="td32"></td>
+                                <td class="td33"></td>
+                                <td class="td34"></td>
+                                <td class="d-none d-lg-inline-block">
+                                    <form action="strana1.html" target="_blank" onSubmit="return provera1()"
+                                        method="post">
+                                        <label class="d-none d-lg-inline-block">Unesite ocenu:</label>
+                                        <input type="number" id="ocena6" min="1" max="5">
+                                        <label class="d-none d-lg-inline-block">Komentar:</label>
+                                        <input type="text" id="kom6">
+                                        <button type="submit" class="btn btn-primary">Potvrdi</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Matematika</td>
+                                <td class="td3"></td>
+                                <td class="td31"></td>
+                                <td class="td32"></td>
+                                <td class="td33"></td>
+                                <td class="td34"></td>
+                                <td class="d-none d-lg-inline-block">
+                                    <form action="strana1.html" target="_blank" onSubmit="return provera1()"
+                                        method="post">
+                                        <label class="d-none d-lg-inline-block">Unesite ocenu:</label>
+                                        <input type="number" id="ocena7" min="1" max="5">
+                                        <label class="d-none d-lg-inline-block">Komentar:</label>
+                                        <input type="text" id="kom7">
+                                        <button type="submit" class="btn btn-primary">Potvrdi</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Fizika</td>
+                                <td class="td3"></td>
+                                <td class="td31"></td>
+                                <td class="td32"></td>
+                                <td class="td33"></td>
+                                <td class="td34"></td>
+                                <td class="d-none d-lg-inline-block">
+                                    <form action="strana1.html" target="_blank" onSubmit="return provera1()"
+                                        method="post">
+                                        <label class="d-none d-lg-inline-block">Unesite ocenu:</label>
+                                        <input type="number" id="ocena8" min="1" max="5">
+                                        <label class="d-none d-lg-inline-block">Komentar:</label>
+                                        <input type="text" id="kom8">
+                                        <button type="submit" class="btn btn-primary">Potvrdi</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Hemija</td>
+                                <td class="td3"></td>
+                                <td class="td31"></td>
+                                <td class="td32"></td>
+                                <td class="td33"></td>
+                                <td class="td34"></td>
+                                <td class="d-none d-lg-inline-block">
+                                    <form action="strana1.html" target="_blank" onSubmit="return provera1()"
+                                        method="post">
+                                        <label class="d-none d-lg-inline-block">Unesite ocenu:</label>
+                                        <input type="number" id="ocena9" min="1" max="5">
+                                        <label class="d-none d-lg-inline-block">Komentar:</label>
+                                        <input type="text" id="kom9">
+                                        <button type="submit" class="btn btn-primary">Potvrdi</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Računarstvo i informatika</td>
+                                <td class="td3"></td>
+                                <td class="td31"></td>
+                                <td class="td32"></td>
+                                <td class="td33"></td>
+                                <td class="td34"></td>
+                                <td class="d-none d-lg-inline-block">
+                                    <form action="strana1.html" target="_blank" onSubmit="return provera1()"
+                                        method="post">
+                                        <label class="d-none d-lg-inline-block">Unesite ocenu:</label>
+                                        <input type="number" id="ocena10" min="1" max="5">
+                                        <label class="d-none d-lg-inline-block">Komentar:</label>
+                                        <input type="text" id="kom10">
+                                        <button type="submit" class="btn btn-primary">Potvrdi</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Fizičko vaspitanje</td>
+                                <td class="td3"></td>
+                                <td class="td31"></td>
+                                <td class="td32"></td>
+                                <td class="td33"></td>
+                                <td class="td34"></td>
+                                <td class="d-none d-lg-inline-block">
+                                    <form action="strana1.html" target="_blank" onSubmit="return provera1()"
+                                        method="post">
+                                        <label class="d-none d-lg-inline-block">Unesite ocenu:</label>
+                                        <input type="number" id="ocena11" min="1" max="5">
+                                        <label class="d-none d-lg-inline-block">Komentar:</label>
+                                        <input type="text" id="kom11">
+                                        <button type="submit" class="btn btn-primary">Potvrdi</button>
+                                    </form>
+                                </td>
+                            </tr>
                         </table>
                     </div>
                     <div id="vladanje3" class="tab-pane fade">
-                        <table id="tabela31"></table>
+                        <table id="tabela31">
+                            <tr>
+                                <td class="v31"></td>
+                                <td class="v32"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="v31"></td>
+                                <td class="v32"></td>
+                                <td class="d-none d-lg-inline-block">
+                                    <form method="post">
+                                        <label class="d-none d-lg-inline-block">Unesite izostanak:</label>
+                                        <input type="number" min="1" max="1">
+                                        <button type="submit" class="btn btn-primary">Potvrdi</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="v31"></td>
+                                <td class="v32"></td>
+                                <td class="d-none d-lg-inline-block">
+                                    <form method="post">
+                                        <label class="d-none d-lg-inline-block">Unesite izostanak:</label>
+                                        <input type="number" min="1" max="1">
+                                        <button type="submit" class="btn btn-primary">Potvrdi</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
-
                 </div>
             </div>
+        </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -41,13 +284,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
-    <script src="js\bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script>
         var dugme31 = document.getElementById("tabela3");
         var dugme32 = document.getElementById("vladanje3");
         dugme31.addEventListener("click", naslov3(n3));
         dugme32.addEventListener("click", vladanje3(n3));
-    </script>
+</script>
 </body>
 
 </html>
