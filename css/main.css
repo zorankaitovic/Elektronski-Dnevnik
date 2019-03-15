@@ -39,6 +39,9 @@ body,html{
     height: auto;
 }
 
+#tabela3 button{
+    width: 100px;
+}
 td {
     width: auto;
     padding: 5px 20px 5px 20px;
@@ -118,6 +121,14 @@ input:checked+.slider:before {
     background: dodgerblue;
     cursor: pointer;
     color: black;
+}
+#tabela2 [title]:hover {
+    background: dodgerblue;
+    cursor: pointer;
+    color: black;
+}
+#tabela3 [min]{
+    width: 50px;
 }
 button {
     width: 200px;
