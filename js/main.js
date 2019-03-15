@@ -4,7 +4,7 @@ ucenici[0] = {
     prezime: "Marković",
     ocene: [[3, 4, 5, 2], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5]],
     brojIzostanaka: [4, 1],
-    vladanje: "2",
+    vladanje: 5,
     rbroj: 0,
 }
 ucenici[1] = {
@@ -12,7 +12,7 @@ ucenici[1] = {
     prezime: "Janković",
     ocene: [[3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5]],
     brojIzostanaka: [4, 5],
-    vladanje: "2",
+    vladanje: 5,
     rbroj: 1,
 }
 ucenici[2] = {
@@ -20,7 +20,7 @@ ucenici[2] = {
     prezime: "Petrović",
     ocene: [[3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5]],
     brojIzostanaka: [4, 15],
-    vladanje: "2",
+    vladanje: 5,
     rbroj: 2,
 }
 ucenici[3] = {
@@ -28,7 +28,7 @@ ucenici[3] = {
     prezime: "Ivanović",
     ocene: [[3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5]],
     brojIzostanaka: [4, 5],
-    vladanje: "2",
+    vladanje: 5,
     rbroj: 3,
 }
 ucenici[4] = {
@@ -36,7 +36,7 @@ ucenici[4] = {
     prezime: "Jovanović",
     ocene: [[3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5]],
     brojIzostanaka: [4, 5],
-    vladanje: "2",
+    vladanje: 5,
     rbroj: 4,
 }
 ucenici[5] = {
@@ -44,7 +44,7 @@ ucenici[5] = {
     prezime: "Bošković",
     ocene: [[3, 4, 5, 2], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5], [3, 4, 5, 5]],
     brojIzostanaka: [4, 5],
-    vladanje: "2",
+    vladanje: 5,
     rbroj: 5,
 }
 profesor = {
@@ -135,7 +135,7 @@ function redosled() {
         niz[i] = obj[i].prezime + " " + obj[i].ime;
     }
     var obj1 = JSON.parse(localStorage.getItem("ucenik"));
-    if (obj1 != null) {
+    if (obj1 != undefined) {
         niz.push(obj1.prezime + " " + obj1.ime);
     }
     niz = niz.sort();
@@ -265,6 +265,14 @@ function vladanje(n2) {
     var table = document.getElementById("tabela21");
     ukori(n2);
     let uk = localStorage.getItem("ukor");
+    var tr = document.createElement("tr");
+    table.appendChild(tr);
+    var td = document.createElement("td");
+    td.textContent = ("Vladanje");
+    tr.appendChild(td);
+    var td = document.createElement("td");
+    td.textContent = ucenici[n2].vladanje;
+    tr.appendChild(td);
     for (i = 0; i < 2; i++) {
         var tr = document.createElement("tr");
         for (j = 0; j < 1; j++) {
@@ -336,84 +344,40 @@ function naslov3(n3) {
     return;
 }
 function ispis(n3) {
-    var tabela = document.getElementById("tabela3");
+    var occena = localStorage.getItem("novaOcena0");
+    var td1 = document.getElementsByClassName("td3");
+    var td2 = document.getElementsByClassName("td31");
+    var td3 = document.getElementsByClassName("td32");
+    var td4 = document.getElementsByClassName("td33");
+    var td5 = document.getElementsByClassName("td34");
     for (i = 0; i < 12; i++) {
-        var tr = document.createElement("tr");
-        for (j = 0; j < 1; j++) {
-            var td = document.createElement("td");
-            td.textContent = predmeti[i];
-            tr.appendChild(td);
-            for (k = 0; k < 4; k++) {
-                var td = document.createElement("td");
-                td.textContent = ucenici[n3].ocene[j][k];
-                td.setAttribute("title", tultip[j][k])
-                tr.appendChild(td);
-            }
-            var td = document.createElement("td");
-            tr.appendChild(td);
-            td.setAttribute("class", "d-none d-lg-inline-block")
-            var label = document.createElement("label");
-            label.textContent = ("Unesite ocenu:");
-            td.appendChild(label);
-            label.setAttribute("class", "d-none d-lg-inline-block")
-            var td = document.createElement("td");
-            tr.appendChild(td);
-            td.setAttribute("class", "d-none d-lg-inline-block")
-            var input = document.createElement("input");
-            input.setAttribute("type", "number");
-            input.setAttribute("min", "1");
-            input.setAttribute("max", "5");
-            td.appendChild(input);
-            var td = document.createElement("td");
-            tr.appendChild(td);
-            td.setAttribute("class", "d-none d-lg-inline-block")
-            var button = document.createElement("button");
-            button.textContent = ("Potvrdi");
-            td.appendChild(button);
-            button.setAttribute("type", "submit");
-            button.setAttribute("class", "btn btn-primary");
-        }
-        tabela.appendChild(tr);
+        td1[i].textContent = ucenici[n3].ocene[i][0];
+        td2[i].textContent = ucenici[n3].ocene[i][1];
+        td3[i].textContent = ucenici[n3].ocene[i][2];
+        td4[i].textContent = ucenici[n3].ocene[i][3];
+        td1[i].setAttribute("title", tultip[i][0]);
+        td2[i].setAttribute("title", tultip[i][1]);
+        td3[i].setAttribute("title", tultip[i][2]);
+        td4[i].setAttribute("title", tultip[i][3]);
+    }
+    if ((occena != null) && (n3 == ucenici[n3].rbroj)) {
+        td5[0].textContent = occena;
+        td5[0].setAttribute("title", localStorage.getItem("noviKom0"));
     }
     return;
 }
 function vladanje3(n3) {
-    var table = document.getElementById("tabela31");
     ukori(n3);
-    let uk = localStorage.getItem("ukor");
+    var uk = localStorage.getItem("ukor");
+    var td1 = document.getElementsByClassName("v31");
+    var td2 = document.getElementsByClassName("v32");
     for (i = 0; i < 2; i++) {
-        var tr = document.createElement("tr");
-        for (j = 0; j < 1; j++) {
-            var td = document.createElement("td");
-            td.textContent = izostanci[i];
-            tr.appendChild(td);
-            var td = document.createElement("td");
-            td.textContent = ucenici[n3].brojIzostanaka[i];
-            tr.appendChild(td);
-            var td = document.createElement("td");
-            tr.appendChild(td);
-            var label = document.createElement("label");
-            label.textContent = ("Unesite izostanak:");
-            td.appendChild(label);
-            label.setAttribute("class", "d-none d-lg-inline-block")
-            var td = document.createElement("td");
-            tr.appendChild(td);
-            td.setAttribute("class", "d-none d-lg-inline-block")
-            var input = document.createElement("input");
-            input.setAttribute("type", "number");
-            input.setAttribute("min", "1");
-            input.setAttribute("max", "1");
-            td.appendChild(input);
-            var td = document.createElement("td");
-            tr.appendChild(td);
-            td.setAttribute("class", "d-none d-lg-inline-block")
-            var button = document.createElement("button");
-            button.textContent = ("Potvrdi");
-            td.appendChild(button);
-            button.setAttribute("type", "submit");
-            button.setAttribute("class", "btn btn-primary");
-        }
-        table.appendChild(tr);
+        td1[0].textContent = ("Vladanje");
+        td1[1].textContent = izostanci[0];
+        td1[2].textContent = izostanci[1];
+        td2[0].textContent = ucenici[n3].vladanje; 
+        td2[1].textContent = ucenici[n3].brojIzostanaka[0]; 
+        td2[2].textContent = ucenici[n3].brojIzostanaka[1]; 
     }
     if (ucenici[n3].brojIzostanaka[1] < 5) {
         return;
@@ -452,6 +416,12 @@ function ukori(n3) {
     localStorage.setItem("ukor", uk);
     return;
 }
-
+function upisiOcenu() {
+    var ocena0 = document.getElementById("ocena0").value;
+    var kom0 = document.getElementById("kom0").value;
+    localStorage.setItem("novaOcena0", ocena0);
+    localStorage.setItem("noviKom0", kom0);
+    return;
+}
 
 
